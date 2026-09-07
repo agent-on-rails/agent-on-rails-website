@@ -5,9 +5,15 @@ alwaysApply: true
 
 # Git commit authorship
 
-- **Author / committer:** `Iman Suherman <iman.suherman@gmail.com>`
-- **Never** add `Co-authored-by:` (including Cursor)
-- **Never** modify `git config user.*` — set identity per commit only
+When creating or rewriting commits in any repository for this user:
+
+- **Author name:** `Iman Suherman`
+- **Author email:** `iman.suherman@gmail.com`
+- **Committer:** same as author
+- **Never** add `Co-authored-by:` trailers (including Cursor / `cursoragent@cursor.com`)
+- **Never** change global or local `git config user.*` — pass identity per commit instead
+
+## How to commit
 
 ```bash
 GIT_AUTHOR_NAME="Iman Suherman" \
@@ -20,3 +26,7 @@ Commit message here.
 EOF
 )"
 ```
+
+## If Cursor injects Co-authored-by
+
+Strip it before push. Prefer `git commit-tree` + `git reset --soft` (avoids prepare-commit-msg hooks) over `commit --amend`, then `git push --force-with-lease` only when history rewrite was explicitly requested.
