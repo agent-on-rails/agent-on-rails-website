@@ -24,7 +24,7 @@ spec:
       containers:
         - name: app
           image: ghcr.io/agent-on-rails/agent-on-rails-website:latest
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
               name: http
