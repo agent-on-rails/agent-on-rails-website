@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: agent-on-rails
+resources:
+  - all.yaml
+commonLabels:
+  app.kubernetes.io/name: agent-on-rails-website
+  app.kubernetes.io/part-of: agent-on-rails
+images:
+  - name: ghcr.io/agent-on-rails/agent-on-rails-website
+    newTag: latest

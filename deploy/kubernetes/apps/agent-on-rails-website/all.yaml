@@ -1,0 +1,93 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: agent-on-rails-website
+  labels:
+    app: agent-on-rails-website
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: agent-on-rails-website
+  template:
+    metadata:
+      labels:
+        app: agent-on-rails-website
+    spec:
+      imagePullSecrets:
+        - name: ghcr-io-pull
+      containers:
+        - name: app
+          image: ghcr.io/agent-on-rails/agent-on-rails-website:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              name: http
+          env:
+            - name: PORT
+              value: "8080"
+            - name: NODE_ENV
+              value: production
+          resources:
+            requests:
+              cpu: 25m
+              memory: 64Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: http
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: http
+            initialDelaySeconds: 15
+            periodSeconds: 20
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: agent-on-rails-website
+spec:
+  selector:
+    app: agent-on-rails-website
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: agent-on-rails-website
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/use-forwarded-headers: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    external-dns.alpha.kubernetes.io/hostname: agent-on-rails.suherman.net
+    external-dns.alpha.kubernetes.io/target: "142.132.244.124"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - agent-on-rails.suherman.net
+      secretName: agent-on-rails-website-tls
+  rules:
+    - host: agent-on-rails.suherman.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: agent-on-rails-website
+                port:
+                  number: 80
