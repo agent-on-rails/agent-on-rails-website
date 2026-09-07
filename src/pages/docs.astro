@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const controlPlane = 'https://github.com/agent-on-rails/agent-on-rails-control-plane';
+const howToUse = `${controlPlane}/blob/main/guides/using-the-control-plane.md`;
+const agentsMd = `${controlPlane}/blob/main/AGENTS.md`;
+const specs = `${controlPlane}/tree/main/specs`;
+---
+
+<BaseLayout
+  title="Docs · Agent On Rails"
+  description="How to use the Agent On Rails control plane — docs-first SDD, specs, AI Team, evidence, and GitHub-native delivery."
+>
+  <header class="mx-auto flex max-w-3xl items-center justify-between px-6 py-5 md:px-8">
+    <a href="/" class="inline-flex items-center gap-3" aria-label="Agent On Rails home">
+      <img src="/brand/logo-mark.png" alt="" width="36" height="36" class="h-9 w-9 object-contain" />
+      <span class="font-display text-lg font-bold tracking-tight text-ink">
+        Agent <span class="text-rail">On</span> Rails
+      </span>
+    </a>
+    <a href="/" class="text-sm font-medium text-ink-mute hover:text-ink">Home</a>
+  </header>
+
+  <main class="mx-auto max-w-3xl px-6 pb-24 pt-8 md:px-8">
+    <p class="font-display text-sm font-semibold uppercase tracking-[0.18em] text-rail-deep">Documentation</p>
+    <h1 class="mt-3 font-display text-4xl font-bold tracking-tight text-ink">
+      How to use the control plane
+    </h1>
+    <p class="mt-4 text-lg leading-relaxed text-ink-mute">
+      The control plane is the authority repository: product docs, ADRs, policies, specs, acceptance criteria, and evidence requirements.
+      Agents and humans both read it before implementation starts.
+    </p>
+
+    <div class="mt-10 space-y-6 border-t border-ink/10 pt-10">
+      <a
+        href={howToUse}
+        class="block transition hover:text-rail-deep"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <h2 class="font-display text-xl font-bold text-ink">Full how-to guide</h2>
+        <p class="mt-2 text-ink-mute">
+          Bootstrap a project, write specs, move lifecycle states, run the AI Team loop, and prove done with evidence.
+        </p>
+      </a>
+
+      <a href={agentsMd} class="block transition hover:text-rail-deep" target="_blank" rel="noreferrer">
+        <h2 class="font-display text-xl font-bold text-ink">AGENTS.md</h2>
+        <p class="mt-2 text-ink-mute">
+          Required first read for any coding agent — boundaries, prohibitions, review separation, and evidence rules.
+        </p>
+      </a>
+
+      <a href={specs} class="block transition hover:text-rail-deep" target="_blank" rel="noreferrer">
+        <h2 class="font-display text-xl font-bold text-ink">Specs (AOR-001 … AOR-007)</h2>
+        <p class="mt-2 text-ink-mute">
+          MVP contracts for bootstrap, GitHub ingestion, planner, execution, review, escalation, and evidence.
+        </p>
+      </a>
+
+      <a href={controlPlane} class="block transition hover:text-rail-deep" target="_blank" rel="noreferrer">
+        <h2 class="font-display text-xl font-bold text-ink">Control plane repository</h2>
+        <p class="mt-2 text-ink-mute">Browse the full authority tree on GitHub.</p>
+      </a>
+    </div>
+
+    <section class="mt-14 rounded-2xl bg-gradient-to-br from-rail-wash via-white to-paper px-6 py-8">
+      <h2 class="font-display text-2xl font-bold text-ink">Operating principle</h2>
+      <p class="mt-3 text-ink-mute leading-relaxed">
+        Docs define intent. Specs define the contract. The control plane governs execution.
+        Agents implement. Evidence proves completion. Humans own final review and merge.
+      </p>
+    </section>
+  </main>
+</BaseLayout>

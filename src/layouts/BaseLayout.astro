@@ -22,12 +22,12 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : As
     <meta name="description" content={description} />
     <meta name="theme-color" content="#0B1F3A" />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" type="image/png" href="/brand/logo-mark.png" />
+    <link rel="icon" type="image/png" href="/brand/favicon.png" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={new URL('/brand/logo-lockup.jpg', Astro.site || 'https://agent-on-rails.suherman.net').href} />
+    <meta property="og:image" content={new URL('/brand/logo-mark.png', Astro.site || 'https://agent-on-rails.suherman.net').href} />
     <meta name="twitter:card" content="summary_large_image" />
     <title>{title}</title>
   </head>
