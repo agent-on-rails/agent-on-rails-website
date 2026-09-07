@@ -1,8 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const controlPlane = 'https://github.com/agent-on-rails/agent-on-rails-control-plane';
-const howToUse = `${controlPlane}/blob/main/guides/using-the-control-plane.md`;
+const cli = 'https://github.com/agent-on-rails/agent-on-rails-cli';
 ---
 
 <BaseLayout>
@@ -20,7 +19,7 @@ const howToUse = `${controlPlane}/blob/main/guides/using-the-control-plane.md`;
         <a href="#how" class="transition hover:text-ink">How it works</a>
         <a href="#team" class="transition hover:text-ink">AI Team</a>
         <a href="/docs" class="transition hover:text-ink">Docs</a>
-        <a href={controlPlane} class="transition hover:text-ink" target="_blank" rel="noreferrer">Control plane</a>
+        <a href={cli} class="transition hover:text-ink" target="_blank" rel="noreferrer">CLI</a>
       </nav>
     </header>
 
@@ -38,18 +37,16 @@ const howToUse = `${controlPlane}/blob/main/guides/using-the-control-plane.md`;
         </p>
         <div class="animate-rise-in delay-3 mt-8 flex flex-wrap items-center gap-3">
           <a
-            href={howToUse}
+            href="/docs"
             class="inline-flex items-center justify-center rounded-md bg-ink px-5 py-3 text-sm font-semibold text-white transition hover:bg-ink-soft"
-            target="_blank"
-            rel="noreferrer"
           >
-            How to use the control plane
+            How to use Agent On Rails
           </a>
           <a
-            href="#how"
+            href="/docs#install"
             class="inline-flex items-center justify-center rounded-md border border-ink/15 bg-white/70 px-5 py-3 text-sm font-semibold text-ink transition hover:border-rail hover:text-rail-deep"
           >
-            See the loop
+            Install the CLI
           </a>
         </div>
       </div>
@@ -176,18 +173,17 @@ const howToUse = `${controlPlane}/blob/main/guides/using-the-control-plane.md`;
       <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-rail-wash via-white to-paper px-8 py-14 md:px-14">
         <div class="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-rail/20 blur-3xl" aria-hidden="true"></div>
         <h2 class="relative font-display text-3xl font-bold tracking-tight text-ink md:text-4xl">
-          Start with the contract.
+          Start with Agent On Rails.
         </h2>
         <p class="relative mt-4 max-w-xl text-lg text-ink-mute">
-          The control plane is the source of truth — product docs, ADRs, policies, specs, and acceptance criteria.
+          Install the CLI, write a spec, approve it, and hand a bounded task to a coding agent.
+          The contract folder is the source of truth — agents implement, evidence proves done.
         </p>
         <a
-          href={howToUse}
+          href="/docs"
           class="relative mt-8 inline-flex items-center justify-center rounded-md bg-ink px-5 py-3 text-sm font-semibold text-white transition hover:bg-ink-soft"
-          target="_blank"
-          rel="noreferrer"
         >
-          Read the how-to guide
+          How to use Agent On Rails
         </a>
       </div>
     </div>
