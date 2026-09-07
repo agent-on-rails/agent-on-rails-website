@@ -19,6 +19,9 @@ app.use(
     setHeaders(res, filePath) {
       if (filePath.endsWith(".html")) {
         res.setHeader("Cache-Control", "public, max-age=60");
+      } else if (/[/\\]brand[/\\]/i.test(filePath)) {
+        // Brand marks change without hashed filenames; avoid week-long immutable CDN sticky.
+        res.setHeader("Cache-Control", "public, max-age=300");
       } else if (/\.(?:js|css|png|jpg|jpeg|svg|webp|woff2)$/i.test(filePath)) {
         res.setHeader("Cache-Control", "public, max-age=604800, immutable");
       }
