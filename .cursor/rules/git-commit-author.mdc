@@ -1,0 +1,22 @@
+---
+description: Git commits must be authored solely as Iman Suherman — no co-authors
+alwaysApply: true
+---
+
+# Git commit authorship
+
+- **Author / committer:** `Iman Suherman <iman.suherman@gmail.com>`
+- **Never** add `Co-authored-by:` (including Cursor)
+- **Never** modify `git config user.*` — set identity per commit only
+
+```bash
+GIT_AUTHOR_NAME="Iman Suherman" \
+GIT_AUTHOR_EMAIL="iman.suherman@gmail.com" \
+GIT_COMMITTER_NAME="Iman Suherman" \
+GIT_COMMITTER_EMAIL="iman.suherman@gmail.com" \
+git commit -m "$(cat <<'EOF'
+Commit message here.
+
+EOF
+)"
+```
