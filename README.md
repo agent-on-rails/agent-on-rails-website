@@ -31,9 +31,28 @@ set -a && source .env && set +a
 SUBDOMAIN=agent-on-rails bash scripts/setup-cloudflare-k8s-subdomain.sh
 ```
 
-GHCR pull secret into namespace:
+## Deploy status checklist
+
+Done:
+- [x] Repo: https://github.com/agent-on-rails/agent-on-rails-website
+- [x] Image: `ghcr.io/agent-on-rails/agent-on-rails-website:62f2b1d…`
+- [x] DNS: `agent-on-rails.suherman.net` → Hetzner LB (Cloudflare proxied)
+- [x] Argo Application committed in `HaloRT/halort-infra`
+
+When the HaloRT kube API is reachable (VPN / office network):
 
 ```bash
 cd ~/src/halort/halort-infra
+set -a && source .env && set +a
+export KUBECONFIG="${KUBECONFIG/#.credentials/$PWD/.credentials}"
+
+# Pull secret for private GHCR package
 NAMESPACE=agent-on-rails bash scripts/sync-ghcr-pull-to-kube.sh
+
+# If Argo cannot fetch the private website repo, register it (same pattern as other private orgs)
+# then hard-refresh the Application in Argo CD UI: agent-on-rails-website
+kubectl -n argocd get application agent-on-rails-website
+kubectl -n agent-on-rails get pods,ingress
 ```
+
+Until the Ingress is healthy, Cloudflare may show **404** on https://agent-on-rails.suherman.net.
