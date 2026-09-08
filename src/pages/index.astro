@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const cli = 'https://github.com/agent-on-rails/agent-on-rails-cli';
+const desktop = 'https://github.com/agent-on-rails/agent-on-rails-desktop';
 ---
 
 <BaseLayout>
@@ -19,6 +20,7 @@ const cli = 'https://github.com/agent-on-rails/agent-on-rails-cli';
         <a href="#how" class="transition hover:text-ink">How it works</a>
         <a href="#team" class="transition hover:text-ink">AI Team</a>
         <a href="/docs" class="transition hover:text-ink">Docs</a>
+        <a href="/docs#setup" class="transition hover:text-ink">Setup</a>
         <a href={cli} class="transition hover:text-ink" target="_blank" rel="noreferrer">CLI</a>
       </nav>
     </header>
@@ -43,10 +45,10 @@ const cli = 'https://github.com/agent-on-rails/agent-on-rails-cli';
             How to use Agent On Rails
           </a>
           <a
-            href="/docs#install"
+            href="/docs#setup"
             class="inline-flex items-center justify-center rounded-md border border-ink/15 bg-white/70 px-5 py-3 text-sm font-semibold text-ink transition hover:border-rail hover:text-rail-deep"
           >
-            Install the CLI
+            macOS &amp; Windows setup
           </a>
         </div>
       </div>
@@ -176,15 +178,25 @@ const cli = 'https://github.com/agent-on-rails/agent-on-rails-cli';
           Start with Agent On Rails.
         </h2>
         <p class="relative mt-4 max-w-xl text-lg text-ink-mute">
-          Install the CLI, write a spec, approve it, and hand a bounded task to a coding agent.
+          Use the setup app or CLI, write a spec, approve it, and hand a bounded task to a coding agent.
           The contract folder is the source of truth — agents implement, evidence proves done.
         </p>
-        <a
-          href="/docs"
-          class="relative mt-8 inline-flex items-center justify-center rounded-md bg-ink px-5 py-3 text-sm font-semibold text-white transition hover:bg-ink-soft"
-        >
-          How to use Agent On Rails
-        </a>
+        <div class="relative mt-8 flex flex-wrap items-center gap-3">
+          <a
+            href="/docs"
+            class="inline-flex items-center justify-center rounded-md bg-ink px-5 py-3 text-sm font-semibold text-white transition hover:bg-ink-soft"
+          >
+            How to use Agent On Rails
+          </a>
+          <a
+            href={desktop}
+            class="inline-flex items-center justify-center rounded-md border border-ink/15 bg-white/80 px-5 py-3 text-sm font-semibold text-ink transition hover:border-rail hover:text-rail-deep"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Setup app on GitHub
+          </a>
+        </div>
       </div>
     </div>
   </section>
