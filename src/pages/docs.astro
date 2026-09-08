@@ -5,6 +5,7 @@ const cli = 'https://github.com/agent-on-rails/agent-on-rails-cli';
 const desktop = 'https://github.com/agent-on-rails/agent-on-rails-desktop';
 const gettingStarted = `${cli}/blob/main/docs/getting-started.md`;
 const walkthrough = `${cli}/blob/main/docs/walkthrough.md`;
+const linuxServer = `${cli}/blob/main/docs/linux-server.md`;
 const controlPlane = 'https://github.com/agent-on-rails/agent-on-rails-control-plane';
 const howToUse = `${controlPlane}/blob/main/guides/using-the-control-plane.md`;
 const agentsMd = `${controlPlane}/blob/main/AGENTS.md`;
@@ -67,10 +68,33 @@ npm run tauri dev</code></pre>
       </p>
     </section>
 
+    <section id="linux" class="mt-12 scroll-mt-24">
+      <h2 class="font-display text-2xl font-bold text-ink">Linux / server (agent host)</h2>
+      <p class="mt-3 text-ink-mute leading-relaxed">
+        Lightest path for a Linux laptop or agent machine (Python CLI only — no desktop GUI).
+        Same harness as Hermes-style workflows: approve a spec, package a bounded task, let your coding agent implement.
+      </p>
+      <pre class="mt-4 overflow-x-auto rounded-lg bg-ink px-4 py-4 text-sm leading-relaxed text-white/90"><code>sudo apt install -y python3 python3-pip python3-venv git pipx   # Debian/Ubuntu
+pipx ensurepath
+pipx install git+https://github.com/agent-on-rails/agent-on-rails-cli.git
+aor init ./my-product --name "My Product"
+cd my-product && aor</code></pre>
+      <p class="mt-4">
+        <a
+          class="font-semibold text-ink underline decoration-rail/60 underline-offset-4 hover:decoration-rail"
+          href={linuxServer}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Full Linux / server implementation steps →
+        </a>
+      </p>
+    </section>
+
     <section id="install" class="mt-12 scroll-mt-24">
       <h2 class="font-display text-2xl font-bold text-ink">Install the CLI</h2>
       <p class="mt-3 text-ink-mute leading-relaxed">
-        Terminal-first path. Requires Python 3.11+. Prefer
+        Works on macOS, Windows, and Linux. Requires Python 3.11+. Prefer
         <a class="font-semibold text-ink underline decoration-rail/60 underline-offset-4 hover:decoration-rail" href="https://pipx.pypa.io/">pipx</a>:
       </p>
       <pre class="mt-4 overflow-x-auto rounded-lg bg-ink px-4 py-4 text-sm leading-relaxed text-white/90"><code>pipx install git+https://github.com/agent-on-rails/agent-on-rails-cli.git
@@ -147,6 +171,18 @@ aor</code></pre>
     </section>
 
     <div class="mt-12 space-y-6 border-t border-ink/10 pt-10">
+      <a
+        href={linuxServer}
+        class="block transition hover:text-rail-deep"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <h2 class="font-display text-xl font-bold text-ink">Linux / server guide</h2>
+        <p class="mt-2 text-ink-mute">
+          Lightweight install on an agent host, first loop, and upgrade tips.
+        </p>
+      </a>
+
       <a
         href={walkthrough}
         class="block transition hover:text-rail-deep"
