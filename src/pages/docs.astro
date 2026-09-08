@@ -42,8 +42,11 @@ const specs = `${controlPlane}/tree/main/specs`;
         <a class="font-semibold text-ink underline decoration-rail/60 underline-offset-4 hover:decoration-rail" href="https://pipx.pypa.io/">pipx</a>:
       </p>
       <pre class="mt-4 overflow-x-auto rounded-lg bg-ink px-4 py-4 text-sm leading-relaxed text-white/90"><code>pipx install git+https://github.com/agent-on-rails/agent-on-rails-cli.git
-aor guide
-aor init my-product</code></pre>
+aor</code></pre>
+      <p class="mt-3 text-ink-mute leading-relaxed">
+        <code class="text-ink">aor</code> opens a mouse-friendly terminal UI (same idea as OpenCode, Claude Code, or Gemini).
+        It is a harness — not a coding agent. Subcommands still work for scripts.
+      </p>
       <p class="mt-3 text-sm text-ink-mute">
         Or:
         <code class="rounded bg-ink/5 px-1.5 py-0.5 text-ink">curl -fsSL https://raw.githubusercontent.com/agent-on-rails/agent-on-rails-cli/main/scripts/install.sh | bash</code>
