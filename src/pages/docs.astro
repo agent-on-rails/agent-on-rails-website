@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const cli = 'https://github.com/agent-on-rails/agent-on-rails-cli';
 const gettingStarted = `${cli}/blob/main/docs/getting-started.md`;
+const walkthrough = `${cli}/blob/main/docs/walkthrough.md`;
 const controlPlane = 'https://github.com/agent-on-rails/agent-on-rails-control-plane';
 const howToUse = `${controlPlane}/blob/main/guides/using-the-control-plane.md`;
 const agentsMd = `${controlPlane}/blob/main/AGENTS.md`;
@@ -65,16 +66,76 @@ aor</code></pre>
       </ol>
     </section>
 
+    <section id="walkthrough" class="mt-12 scroll-mt-24">
+      <h2 class="font-display text-2xl font-bold text-ink">Walkthrough — start to final review</h2>
+      <p class="mt-3 text-ink-mute leading-relaxed">
+        Full path: install → init → write spec → human approve → plan → run →
+        coding agent implements → evidence → human final review.
+      </p>
+      <ol class="mt-6 space-y-4 text-ink-mute">
+        <li>
+          <span class="font-semibold text-ink">1. Install &amp; open TUI</span> —
+          <code class="text-ink">pipx install …</code> then <code class="text-ink">aor</code>.
+        </li>
+        <li>
+          <span class="font-semibold text-ink">2. Init</span> —
+          create the docs+specs contract (no app code).
+        </li>
+        <li>
+          <span class="font-semibold text-ink">3. New spec</span> —
+          edit <code class="text-ink">spec.md</code>, acceptance, and evidence while status is DRAFT.
+        </li>
+        <li>
+          <span class="font-semibold text-ink">4. Approve</span> —
+          human gate. Agents cannot skip this.
+        </li>
+        <li>
+          <span class="font-semibold text-ink">5. Plan + Run</span> —
+          packages <code class="text-ink">.aor/packages/TASK-00N/prompt.md</code> for Cursor / Claude / Codex.
+        </li>
+        <li>
+          <span class="font-semibold text-ink">6. Implement</span> —
+          in the sibling app repo only. PR + tests = evidence.
+        </li>
+        <li>
+          <span class="font-semibold text-ink">7. Final review</span> —
+          human Review in the TUI (or <code class="text-ink">aor review TASK-001 --approve</code>). Ready when evidence exists.
+        </li>
+      </ol>
+      <p class="mt-4">
+        <a
+          class="font-semibold text-ink underline decoration-rail/60 underline-offset-4 hover:decoration-rail"
+          href={walkthrough}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Open the full walkthrough on GitHub →
+        </a>
+      </p>
+    </section>
+
     <div class="mt-12 space-y-6 border-t border-ink/10 pt-10">
+      <a
+        href={walkthrough}
+        class="block transition hover:text-rail-deep"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <h2 class="font-display text-xl font-bold text-ink">Full walkthrough (start → final review)</h2>
+        <p class="mt-2 text-ink-mute">
+          Screen-by-screen TUI steps, command-line twin, checklist, and stuck? fixes.
+        </p>
+      </a>
+
       <a
         href={gettingStarted}
         class="block transition hover:text-rail-deep"
         target="_blank"
         rel="noreferrer"
       >
-        <h2 class="font-display text-xl font-bold text-ink">Full CLI walkthrough</h2>
+        <h2 class="font-display text-xl font-bold text-ink">CLI reference</h2>
         <p class="mt-2 text-ink-mute">
-          Install, init, approve, plan, package a task, and record human final review.
+          Install options, loop table, and what <code class="text-ink">aor run</code> does today.
         </p>
       </a>
 
