@@ -82,20 +82,16 @@ const adr008 = `${controlPlane}/blob/main/adr/ADR-008-desktop-setup-wizard.md`;
           Download for macOS (.dmg)
         </a>
         <a
-          href="https://github.com/agent-on-rails/agent-on-rails-desktop/releases"
+          href="/downloads/Agent-On-Rails-Setup-windows.msi"
           class="inline-flex items-center justify-center rounded-md border border-ink/20 bg-white px-5 py-3 text-sm font-semibold text-ink transition hover:border-ink/40"
-          target="_blank"
-          rel="noreferrer"
         >
-          Windows (.msi) — GitHub Releases
+          Download for Windows (.msi)
         </a>
       </div>
       <p class="mt-3 text-sm text-ink-mute leading-relaxed">
         macOS builds are signed with Developer ID (Sparkle auto-update via
         <a class="font-semibold text-ink underline decoration-rail/60 underline-offset-4 hover:decoration-rail" href="/downloads/appcast.xml">appcast.xml</a>).
-        Windows installers ship from
-        <a class="font-semibold text-ink underline decoration-rail/60 underline-offset-4 hover:decoration-rail" href="https://github.com/agent-on-rails/agent-on-rails-desktop/releases" target="_blank" rel="noreferrer">GitHub Releases</a>
-        when available. Requires Python 3.11+.
+        Windows MSI is published from GitHub Actions (unsigned until a code-signing certificate is configured). Requires Python 3.11+.
       </p>
       <p class="mt-3 text-sm text-ink-mute leading-relaxed">
         Prefer building from source?
