@@ -11,6 +11,11 @@ const controlPlane = 'https://github.com/agent-on-rails/agent-on-rails-control-p
 const howToUse = `${controlPlane}/blob/main/guides/using-the-control-plane.md`;
 const agentsMd = `${controlPlane}/blob/main/AGENTS.md`;
 const specs = `${controlPlane}/tree/main/specs`;
+const aor006 = `${controlPlane}/blob/main/specs/AOR-006-model-escalation/spec.md`;
+const aor009 = `${controlPlane}/blob/main/specs/AOR-009-unattended-ai-team-runtime/spec.md`;
+const escalation = `${controlPlane}/blob/main/policies/escalation.md`;
+const watchdog = `${controlPlane}/blob/main/policies/execution-watchdog.md`;
+const phase1 = `${controlPlane}/blob/main/plans/phase-1-backend-coherence.md`;
 const adr008 = `${controlPlane}/blob/main/adr/ADR-008-desktop-setup-wizard.md`;
 ---
 
@@ -182,9 +187,57 @@ aor</code></pre>
         <li><span class="font-semibold text-ink">1. Init</span> — create the docs+specs contract. No application code.</li>
         <li><span class="font-semibold text-ink">2. Spec</span> — write <code class="text-ink">spec.md</code> + acceptance + evidence.</li>
         <li><span class="font-semibold text-ink">3. Approve</span> — a human must approve before agents run.</li>
-        <li><span class="font-semibold text-ink">4. Plan / run</span> — Agent On Rails packages a bounded task for Cursor, Claude, Codex, or another headless agent.</li>
+        <li><span class="font-semibold text-ink">4. Plan / run</span> — Agent On Rails packages a bounded task for Cursor, Claude, Codex, or another headless agent. With the engine online, <code class="text-ink">aor run</code> registers the task and drives implementor ↔ reviewer under policy.</li>
         <li><span class="font-semibold text-ink">5. Review</span> — humans own final review and merge. Evidence proves done.</li>
       </ol>
+    </section>
+
+    <section id="governance" class="mt-12 scroll-mt-24">
+      <h2 class="font-display text-2xl font-bold text-ink">Escalation, watchdog &amp; unattended runtime</h2>
+      <p class="mt-3 text-ink-mute leading-relaxed">
+        Approved contracts
+        <a class="font-semibold text-ink underline decoration-rail/60 underline-offset-4 hover:decoration-rail" href={aor006} target="_blank" rel="noreferrer">AOR-006</a>
+        and
+        <a class="font-semibold text-ink underline decoration-rail/60 underline-offset-4 hover:decoration-rail" href={aor009} target="_blank" rel="noreferrer">AOR-009</a>
+        define how Agent On Rails decides retries, stops forever-loops, and fails fast on environment hangs —
+        without babysitting the terminal.
+      </p>
+      <ul class="mt-6 space-y-4 text-ink-mute">
+        <li>
+          <span class="font-semibold text-ink">Intelligent escalation (Option A)</span> —
+          distinct bugs across fix↔review are normal progress. The <em>same</em> failure signature climbs
+          tier 1 → 2 → 3 → human. Strike max is only a safety ceiling.
+        </li>
+        <li>
+          <span class="font-semibold text-ink">Environment ≠ smarter model</span> —
+          hung Gradle, npm, or a missing device is cancelled, notified, and marked
+          <code class="text-ink">blocked_environment</code>. Independent work continues.
+          Wave-level <code class="text-ink">HUMAN_REQUIRED</code> only when blocking acceptance remains.
+        </li>
+        <li>
+          <span class="font-semibold text-ink">Run report</span> —
+          every wave ends with a durable report:
+          <code class="text-ink">spec_id</code>, <code class="text-ink">terminal_status</code>,
+          completed, blocked environment, skipped deps, coding failures, human actions, notifications.
+          The engine authors it; empty lists are allowed, omitted keys are not.
+        </li>
+        <li>
+          <span class="font-semibold text-ink">Task API</span> —
+          register with <code class="text-ink">POST /v1/tasks</code>, then run. The engine owns attempt,
+          tier, and signature history — callers report events.
+        </li>
+        <li>
+          <span class="font-semibold text-ink">Watchdog classification</span> —
+          specific-first: <code class="text-ink">./gradlew test</code> is a test,
+          <code class="text-ink">build</code> / <code class="text-ink">assemble*</code> is a build —
+          not a short device timeout by default.
+        </li>
+      </ul>
+      <p class="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+        <a class="font-semibold text-ink underline decoration-rail/60 underline-offset-4 hover:decoration-rail" href={escalation} target="_blank" rel="noreferrer">Escalation policy →</a>
+        <a class="font-semibold text-ink underline decoration-rail/60 underline-offset-4 hover:decoration-rail" href={watchdog} target="_blank" rel="noreferrer">Execution watchdog →</a>
+        <a class="font-semibold text-ink underline decoration-rail/60 underline-offset-4 hover:decoration-rail" href={phase1} target="_blank" rel="noreferrer">Phase 1 coherence plan →</a>
+      </p>
     </section>
 
     <section id="walkthrough" class="mt-12 scroll-mt-24">
@@ -317,9 +370,23 @@ aor</code></pre>
       </a>
 
       <a href={specs} class="block transition hover:text-rail-deep" target="_blank" rel="noreferrer">
-        <h2 class="font-display text-xl font-bold text-ink">Specs (AOR-001 … AOR-008)</h2>
+        <h2 class="font-display text-xl font-bold text-ink">Specs (AOR-001 … AOR-009)</h2>
         <p class="mt-2 text-ink-mute">
-          MVP contracts for bootstrap, GitHub, planner, execution, review, escalation, evidence, and desktop setup.
+          MVP contracts for bootstrap, GitHub, planner, execution, review, escalation, evidence, desktop setup, and unattended AI Team runtime.
+        </p>
+      </a>
+
+      <a href={aor006} class="block transition hover:text-rail-deep" target="_blank" rel="noreferrer">
+        <h2 class="font-display text-xl font-bold text-ink">AOR-006 — Model escalation</h2>
+        <p class="mt-2 text-ink-mute">
+          Forever-loop vs normal progress, Option A ladder, and auditable escalation history.
+        </p>
+      </a>
+
+      <a href={aor009} class="block transition hover:text-rail-deep" target="_blank" rel="noreferrer">
+        <h2 class="font-display text-xl font-bold text-ink">AOR-009 — Unattended AI Team runtime</h2>
+        <p class="mt-2 text-ink-mute">
+          Manager loop, watchdog, RunReport, task API, and wave-level human gates.
         </p>
       </a>
 

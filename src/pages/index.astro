@@ -88,8 +88,8 @@ const desktop = 'https://github.com/agent-on-rails/agent-on-rails-desktop';
           [
             { n: '01', t: 'Authority', d: 'Product docs, ADRs, policies, and specs live in the control plane.' },
             { n: '02', t: 'Plan', d: 'Approved specs become a task graph — not one unbounded prompt.' },
-            { n: '03', t: 'Execute', d: 'An AI Team implements on Git — branches, PRs, and Checks — with cheap-first model routing.' },
-            { n: '04', t: 'Prove', d: 'Independent review + evidence, then human final review before merge.' },
+            { n: '03', t: 'Execute', d: 'An AI Team implements on Git — branches, PRs, and Checks — with cheap-first routing and forever-loop detection.' },
+            { n: '04', t: 'Prove', d: 'Independent review + evidence + run report, then human final review before merge.' },
           ].map((step) => (
             <li class="relative border-l-2 border-rail/50 pl-5 md:border-l-0 md:border-t-2 md:pl-0 md:pt-5">
               <span class="font-display text-sm font-bold text-rail-deep">{step.n}</span>
@@ -145,7 +145,7 @@ const desktop = 'https://github.com/agent-on-rails/agent-on-rails-desktop';
       <ul class="mt-12 grid gap-8 sm:grid-cols-3">
         {
           [
-            { t: 'Manager', d: 'Orchestrates next steps, retries, and escalation within policy.' },
+            { t: 'Manager', d: 'Orchestrates hops, classifies failures, escalates or stops stuck paths, and emits the run report.' },
             { t: 'Implementor', d: 'Writes and fixes code against the bounded task contract.' },
             { t: 'Reviewer', d: 'Judges diffs against acceptance and evidence — never self-approves.' },
           ].map((role) => (
@@ -170,7 +170,8 @@ const desktop = 'https://github.com/agent-on-rails/agent-on-rails-desktop';
           [
             { t: 'Specs as authority', d: 'Approved specifications bind planners, agents, and reviewers.' },
             { t: 'Evidence before done', d: 'Completion requires PRs, tests, review, and an audit trail.' },
-            { t: 'Cheap-first escalation', d: 'Start inexpensive. Raise model tier only when the task demands it.' },
+            { t: 'Cheap-first escalation', d: 'Start inexpensive. Same stuck failure climbs tiers then human; different bugs are normal progress.' },
+            { t: 'Watchdog, not babysitting', d: 'Hung builds, npm, or devices fail fast, notify, and continue independent work — with a run report at wave end.' },
             { t: 'Human final review', d: 'Agents prepare the change; people own the merge gate.' },
           ].map((item) => (
             <div class="border-t border-ink/10 pt-5">
