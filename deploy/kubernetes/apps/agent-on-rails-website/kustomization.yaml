@@ -8,4 +8,4 @@ commonLabels:
   app.kubernetes.io/part-of: agent-on-rails
 images:
   - name: ghcr.io/agent-on-rails/agent-on-rails-website
-    newTag: 476c29de5d57796ac46be4aa17ac06dfae6fe1f0
+    newTag: c07e5f569e0149209ddb15d5cc10559812ecfa85
