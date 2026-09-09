@@ -74,23 +74,33 @@ const adr008 = `${controlPlane}/blob/main/adr/ADR-008-desktop-setup-wizard.md`;
         (<a class="font-semibold text-ink underline decoration-rail/60 underline-offset-4 hover:decoration-rail" href={adr008} target="_blank" rel="noreferrer">ADR-008</a>);
         day-to-day work stays in <code class="text-ink">aor</code>.
       </p>
-      <p class="mt-4">
+      <div class="mt-4 flex flex-wrap gap-3">
         <a
-          href={desktop}
+          href="/downloads/Agent-On-Rails-Setup-macos.dmg"
           class="inline-flex items-center justify-center rounded-md bg-ink px-5 py-3 text-sm font-semibold text-white transition hover:bg-ink-soft"
+        >
+          Download for macOS (.dmg)
+        </a>
+        <a
+          href="https://github.com/agent-on-rails/agent-on-rails-desktop/releases"
+          class="inline-flex items-center justify-center rounded-md border border-ink/20 bg-white px-5 py-3 text-sm font-semibold text-ink transition hover:border-ink/40"
           target="_blank"
           rel="noreferrer"
         >
-          Get the setup app on GitHub
+          Windows (.msi) — GitHub Releases
         </a>
-      </p>
-      <pre class="mt-4 overflow-x-auto rounded-lg bg-ink px-4 py-4 text-sm leading-relaxed text-white/90"><code>git clone https://github.com/agent-on-rails/agent-on-rails-desktop.git
-cd agent-on-rails-desktop
-npm install
-npm run tauri dev</code></pre>
+      </div>
       <p class="mt-3 text-sm text-ink-mute leading-relaxed">
-        Requires Node 20+, Rust (rustup), and Python 3.11+. Release <code class="text-ink">.dmg</code> / <code class="text-ink">.msi</code> builds are next;
-        until then run from the repo with <code class="text-ink">npm run tauri dev</code> or <code class="text-ink">npm run tauri build</code>.
+        macOS builds are signed with Developer ID (Sparkle auto-update via
+        <a class="font-semibold text-ink underline decoration-rail/60 underline-offset-4 hover:decoration-rail" href="/downloads/appcast.xml">appcast.xml</a>).
+        Windows installers ship from
+        <a class="font-semibold text-ink underline decoration-rail/60 underline-offset-4 hover:decoration-rail" href="https://github.com/agent-on-rails/agent-on-rails-desktop/releases" target="_blank" rel="noreferrer">GitHub Releases</a>
+        when available. Requires Python 3.11+.
+      </p>
+      <p class="mt-3 text-sm text-ink-mute leading-relaxed">
+        Prefer building from source?
+        <a class="font-semibold text-ink underline decoration-rail/60 underline-offset-4 hover:decoration-rail" href={desktop} target="_blank" rel="noreferrer">agent-on-rails-desktop</a>
+        — <code class="text-ink">npm install &amp;&amp; npm run tauri build</code> (Node 20+, Rust).
       </p>
     </section>
 
