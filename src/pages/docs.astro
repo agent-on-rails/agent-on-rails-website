@@ -66,7 +66,7 @@ const adr008 = `${controlPlane}/blob/main/adr/ADR-008-desktop-setup-wizard.md`;
     </section>
 
     <section id="setup" class="mt-12 scroll-mt-24">
-      <h2 class="font-display text-2xl font-bold text-ink">macOS &amp; Windows setup app</h2>
+      <h2 class="font-display text-2xl font-bold text-ink">Setup app (macOS, Windows, Linux)</h2>
       <p class="mt-3 text-ink-mute leading-relaxed">
         Prefer a wizard? The desktop setup app checks Python, installs the
         <code class="text-ink">aor</code> CLI, and bootstraps your first docs+specs project —
@@ -87,17 +87,51 @@ const adr008 = `${controlPlane}/blob/main/adr/ADR-008-desktop-setup-wizard.md`;
         >
           Download for Windows (.msi)
         </a>
+        <a
+          href="#setup-linux"
+          class="inline-flex items-center justify-center rounded-md border border-ink/20 bg-white px-5 py-3 text-sm font-semibold text-ink transition hover:border-ink/40"
+        >
+          Linux — build from source
+        </a>
       </div>
       <p class="mt-3 text-sm text-ink-mute leading-relaxed">
         macOS builds are signed with Developer ID (Sparkle auto-update via
         <a class="font-semibold text-ink underline decoration-rail/60 underline-offset-4 hover:decoration-rail" href="/downloads/appcast.xml">appcast.xml</a>).
         Windows MSI is published from GitHub Actions (unsigned until a code-signing certificate is configured). Requires Python 3.11+.
       </p>
-      <p class="mt-3 text-sm text-ink-mute leading-relaxed">
-        Prefer building from source?
-        <a class="font-semibold text-ink underline decoration-rail/60 underline-offset-4 hover:decoration-rail" href={desktop} target="_blank" rel="noreferrer">agent-on-rails-desktop</a>
-        — <code class="text-ink">npm install &amp;&amp; npm run tauri build</code> (Node 20+, Rust).
-      </p>
+
+      <div id="setup-linux" class="mt-8 scroll-mt-24 rounded-xl border border-ink/10 bg-white/70 px-5 py-5">
+        <h3 class="font-display text-lg font-bold text-ink">Linux — compile yourself</h3>
+        <p class="mt-2 text-sm text-ink-mute leading-relaxed">
+          No prebuilt Linux installer. Build the Tauri wizard locally (Node 20+, Rust, WebKitGTK),
+          or skip the GUI and use the
+          <a class="font-semibold text-ink underline decoration-rail/60 underline-offset-4 hover:decoration-rail" href="#linux">CLI-only Linux path</a> below.
+        </p>
+        <pre class="mt-4 overflow-x-auto rounded-lg bg-ink px-4 py-4 text-sm leading-relaxed text-white/90"><code># Debian/Ubuntu system deps
+sudo apt update
+sudo apt install -y curl build-essential pkg-config \
+  libwebkit2gtk-4.1-dev libayatana-appindicator3-dev \
+  librsvg2-dev patchelf libssl-dev
+
+# Build the setup wizard
+git clone https://github.com/agent-on-rails/agent-on-rails-desktop.git
+cd agent-on-rails-desktop
+npm install
+npm run tauri build
+# → src-tauri/target/release/bundle/</code></pre>
+        <p class="mt-3 text-sm text-ink-mute leading-relaxed">
+          Full notes:
+          <a
+            class="font-semibold text-ink underline decoration-rail/60 underline-offset-4 hover:decoration-rail"
+            href={`${desktop}/blob/main/docs/build-linux.md`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            docs/build-linux.md
+          </a>
+          · Fedora packages included there.
+        </p>
+      </div>
     </section>
 
     <section id="linux" class="mt-12 scroll-mt-24">
