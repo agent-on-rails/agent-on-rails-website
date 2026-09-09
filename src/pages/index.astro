@@ -38,19 +38,45 @@ const desktop = 'https://github.com/agent-on-rails/agent-on-rails-desktop';
         <p class="animate-rise-in delay-2 mt-5 max-w-md text-base leading-relaxed text-ink-mute sm:text-lg">
           Define the contract. Let agents deliver it — with review, escalation, and evidence before done.
         </p>
-        <div class="animate-rise-in delay-3 mt-8 flex flex-wrap items-center gap-3">
+        <div class="animate-rise-in delay-3 mt-8 flex flex-col gap-4">
           <a
             href="/docs"
-            class="inline-flex items-center justify-center rounded-md bg-ink px-5 py-3 text-sm font-semibold text-white transition hover:bg-ink-soft"
+            class="inline-flex w-fit items-center justify-center rounded-md bg-ink px-5 py-3 text-sm font-semibold text-white transition hover:bg-ink-soft"
           >
             How to use Agent On Rails
           </a>
-          <a
-            href="/docs#setup"
-            class="inline-flex items-center justify-center rounded-md border border-ink/15 bg-white/70 px-5 py-3 text-sm font-semibold text-ink transition hover:border-rail hover:text-rail-deep"
-          >
-            macOS &amp; Windows setup
-          </a>
+          <div class="flex flex-wrap items-center gap-2.5" role="group" aria-label="Download setup app">
+            <a
+              href="/downloads/Agent-On-Rails-Setup-macos.dmg"
+              class="inline-flex items-center gap-2 rounded-md border border-ink/15 bg-white/70 px-4 py-2.5 text-sm font-semibold text-ink transition hover:border-rail hover:text-rail-deep"
+            >
+              <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M16.13 2.05c-.95.1-2.1.68-2.76 1.48-.6.72-1.12 1.8-.92 2.84 1.04.04 2.12-.6 2.76-1.4.62-.76 1.08-1.84.92-2.92zM20.4 17.2c-.56 1.28-.82 1.84-1.54 2.96-.98 1.52-2.36 3.4-4.08 3.42-1.52.02-1.92-.98-4-1-.2.04-2.06.16-3.52 1.12C5.7 24.8 4.4 23.3 3.2 21.4 1.1 17.9.04 12.7 2.4 9.2c1.2-1.8 3.1-2.9 4.9-2.9 1.82-.04 3.34 1.2 4.5 1.2 1.12 0 2.88-1.48 4.86-1.26.84.04 3.18.34 4.68 2.54-4.12 2.24-3.44 8.08-.94 8.42z" />
+              </svg>
+              macOS
+            </a>
+            <a
+              href="/downloads/Agent-On-Rails-Setup-windows.msi"
+              class="inline-flex items-center gap-2 rounded-md border border-ink/15 bg-white/70 px-4 py-2.5 text-sm font-semibold text-ink transition hover:border-rail hover:text-rail-deep"
+            >
+              <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M3 5.1 10.4 4.1v7.1H3V5.1zm0 13.8 7.4 1V12.9H3v6zm8.2 1.2L21 21.5V12.9h-9.8v7.2zM11.2 4 21 2.5v9.7h-9.8V4z" />
+              </svg>
+              Windows
+            </a>
+            <a
+              href="/docs#setup-linux"
+              class="inline-flex items-center gap-2 rounded-md border border-ink/15 bg-white/70 px-4 py-2.5 text-sm font-semibold text-ink transition hover:border-rail hover:text-rail-deep"
+            >
+              <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12.2 2c-1.7 0-2.9 1.5-2.5 3.1.2.7.3 1.2.3 1.8 0 .8-.3 1.6-.9 2.3-.9 1.3-1.6 2.8-1.6 4.4 0 .8.3 1.5.9 1.9-.1.5-.2.9-.2 1.4 0 1.9 1.3 3.5 3.1 4.1.4 1.5 1.7 2.6 3.3 2.6s2.9-1.1 3.3-2.6c1.8-.6 3.1-2.2 3.1-4.1 0-.5-.1-.9-.2-1.4.6-.4.9-1.1.9-1.9 0-1.6-.7-3.1-1.6-4.4-.6-.7-.9-1.5-.9-2.3 0-.6.1-1.1.3-1.8.4-1.6-.8-3.1-2.5-3.1h-1.8zm-1.5 14.8c-.4 0-.8.3-.8.8s.4.8.8.8.8-.3.8-.8-.4-.8-.8-.8zm3.6 0c-.4 0-.8.3-.8.8s.4.8.8.8.8-.3.8-.8-.4-.8-.8-.8z" />
+              </svg>
+              Linux
+            </a>
+          </div>
+          <p class="text-xs text-ink-mute">
+            Setup app for macOS &amp; Windows · Linux builds from source
+          </p>
         </div>
       </div>
 
