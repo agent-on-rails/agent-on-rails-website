@@ -1,10 +1,10 @@
 {
-  "version": "0.1.4",
+  "version": "0.1.5",
   "notes": "Agent On Rails Setup 0.1.4 (macOS signed+notarized; Windows CI MSI \u2014 unsigned until WINDOWS_CERTIFICATE is configured). Aligns with CLI 0.3.1 SurveyDesk gather.",
-  "pub_date": "2026-09-12T05:29:41Z",
+  "pub_date": "2026-09-12T23:06:27Z",
   "platforms": {
     "darwin-aarch64": {
-      "url": "https://agent-on-rails.suherman.net/downloads/Agent-On-Rails-Setup-0.1.4.zip",
+      "url": "https://agent-on-rails.suherman.net/downloads/Agent-On-Rails-Setup-0.1.5.zip",
       "signature": ""
     },
     "windows-x86_64": {
