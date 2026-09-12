@@ -1,8 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { setupRelease } from '../lib/setup-release';
 
 const cli = 'https://github.com/agent-on-rails/agent-on-rails-cli';
 const desktop = 'https://github.com/agent-on-rails/agent-on-rails-desktop';
+const release = setupRelease();
 ---
 
 <BaseLayout>
@@ -45,6 +47,19 @@ const desktop = 'https://github.com/agent-on-rails/agent-on-rails-desktop';
           >
             How to use Agent On Rails
           </a>
+          {
+            release.version && (
+              <p class="text-sm text-ink-soft">
+                <span class="font-semibold text-ink">Setup {release.version}</span>
+                {release.released && (
+                  <>
+                    <span aria-hidden="true"> · </span>
+                    <time datetime={release.isoDate}>{release.released}</time>
+                  </>
+                )}
+              </p>
+            )
+          }
           <div class="flex flex-wrap items-center gap-2.5" role="group" aria-label="Download setup app">
             <a
               href="/downloads/Agent-On-Rails-Setup-macos.dmg"
@@ -237,6 +252,19 @@ const desktop = 'https://github.com/agent-on-rails/agent-on-rails-desktop';
           Use the setup app or CLI, write a spec, approve it, and hand a bounded task to a coding agent.
           The contract folder is the source of truth — agents implement, evidence proves done.
         </p>
+        {
+          release.version && (
+            <p class="relative mt-5 text-sm text-ink-soft">
+              <span class="font-semibold text-ink">Setup {release.version}</span>
+              {release.released && (
+                <>
+                  <span aria-hidden="true"> · </span>
+                  <time datetime={release.isoDate}>{release.released}</time>
+                </>
+              )}
+            </p>
+          )
+        }
         <div class="relative mt-8 flex flex-wrap items-center gap-3">
           <a
             href="/docs"

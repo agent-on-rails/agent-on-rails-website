@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { setupRelease } from '../lib/setup-release';
 
 const cli = 'https://github.com/agent-on-rails/agent-on-rails-cli';
 const desktop = 'https://github.com/agent-on-rails/agent-on-rails-desktop';
@@ -17,6 +18,7 @@ const escalation = `${controlPlane}/blob/main/policies/escalation.md`;
 const watchdog = `${controlPlane}/blob/main/policies/execution-watchdog.md`;
 const phase1 = `${controlPlane}/blob/main/plans/phase-1-backend-coherence.md`;
 const adr008 = `${controlPlane}/blob/main/adr/ADR-008-desktop-setup-wizard.md`;
+const release = setupRelease();
 ---
 
 <BaseLayout
@@ -81,6 +83,19 @@ const adr008 = `${controlPlane}/blob/main/adr/ADR-008-desktop-setup-wizard.md`;
         (<a class="font-semibold text-ink underline decoration-rail/60 underline-offset-4 hover:decoration-rail" href={adr008} target="_blank" rel="noreferrer">ADR-008</a>);
         day-to-day work stays in <code class="text-ink">aor</code>.
       </p>
+      {
+        release.version && (
+          <p class="mt-4 text-sm text-ink-soft">
+            <span class="font-semibold text-ink">Setup {release.version}</span>
+            {release.released && (
+              <>
+                <span aria-hidden="true"> · </span>
+                <time datetime={release.isoDate}>{release.released}</time>
+              </>
+            )}
+          </p>
+        )
+      }
       <div class="mt-4 flex flex-wrap gap-3">
         <a
           href="/downloads/Agent-On-Rails-Setup-macos.dmg"
