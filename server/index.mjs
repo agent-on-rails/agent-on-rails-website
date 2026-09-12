@@ -19,6 +19,13 @@ app.use(
     setHeaders(res, filePath) {
       if (filePath.endsWith(".html")) {
         res.setHeader("Cache-Control", "public, max-age=60");
+      } else if (/[/\\]downloads[/\\]/i.test(filePath)) {
+        // Stable aliases (…-macos.dmg) change in place; versioned files are immutable.
+        if (/Agent-On-Rails-Setup-\d+\.\d+\.\d+/i.test(filePath)) {
+          res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+        } else {
+          res.setHeader("Cache-Control", "public, max-age=60, must-revalidate");
+        }
       } else if (/[/\\]brand[/\\]/i.test(filePath)) {
         // Brand marks change without hashed filenames; avoid week-long immutable CDN sticky.
         res.setHeader("Cache-Control", "public, max-age=300");

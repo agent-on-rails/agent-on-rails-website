@@ -62,7 +62,7 @@ const release = setupRelease();
           }
           <div class="flex flex-wrap items-center gap-2.5" role="group" aria-label="Download setup app">
             <a
-              href="/downloads/Agent-On-Rails-Setup-macos.dmg"
+              href={release.dmgHref}
               class="inline-flex items-center gap-2 rounded-md border border-ink/15 bg-white/70 px-4 py-2.5 text-sm font-semibold text-ink transition hover:border-rail hover:text-rail-deep"
             >
               <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -71,7 +71,7 @@ const release = setupRelease();
               macOS
             </a>
             <a
-              href="/downloads/Agent-On-Rails-Setup-windows.msi"
+              href={release.windowsHref}
               class="inline-flex items-center gap-2 rounded-md border border-ink/15 bg-white/70 px-4 py-2.5 text-sm font-semibold text-ink transition hover:border-rail hover:text-rail-deep"
             >
               <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -273,7 +273,7 @@ const release = setupRelease();
             How to use Agent On Rails
           </a>
           <a
-            href="/downloads/Agent-On-Rails-Setup-macos.dmg"
+            href={release.dmgHref}
             class="inline-flex items-center justify-center rounded-md border border-ink/15 bg-white/80 px-5 py-3 text-sm font-semibold text-ink transition hover:border-rail hover:text-rail-deep"
           >
             Download for macOS

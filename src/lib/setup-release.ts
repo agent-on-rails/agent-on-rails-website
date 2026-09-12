@@ -7,6 +7,9 @@ export type SetupRelease = {
   version: string;
   released: string;
   isoDate: string;
+  /** Versioned DMG path — avoids sticky CDN cache on the stable alias. */
+  dmgHref: string;
+  windowsHref: string;
 };
 
 export function setupRelease(): SetupRelease {
@@ -25,5 +28,14 @@ export function setupRelease(): SetupRelease {
         timeZone: 'Australia/Sydney',
       }).format(parsed)
     : '';
-  return { version, released, isoDate };
+  const dmgHref = version
+    ? `/downloads/Agent-On-Rails-Setup-${version}-macos.dmg`
+    : '/downloads/Agent-On-Rails-Setup-macos.dmg';
+  return {
+    version,
+    released,
+    isoDate,
+    dmgHref,
+    windowsHref: '/downloads/Agent-On-Rails-Setup-windows.msi',
+  };
 }

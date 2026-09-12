@@ -98,13 +98,13 @@ const release = setupRelease();
       }
       <div class="mt-4 flex flex-wrap gap-3">
         <a
-          href="/downloads/Agent-On-Rails-Setup-macos.dmg"
+          href={release.dmgHref}
           class="inline-flex items-center justify-center rounded-md bg-ink px-5 py-3 text-sm font-semibold text-white transition hover:bg-ink-soft"
         >
           Download for macOS (.dmg)
         </a>
         <a
-          href="/downloads/Agent-On-Rails-Setup-windows.msi"
+          href={release.windowsHref}
           class="inline-flex items-center justify-center rounded-md border border-ink/20 bg-white px-5 py-3 text-sm font-semibold text-ink transition hover:border-ink/40"
         >
           Download for Windows (.msi)
