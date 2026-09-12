@@ -86,7 +86,7 @@ const release = setupRelease();
       {
         release.version && (
           <p class="mt-4 text-sm text-ink-soft">
-            <span class="font-semibold text-ink">Setup {release.version}</span>
+            <span class="font-semibold text-ink">Agent On Rails {release.version}</span>
             {release.released && (
               <>
                 <span aria-hidden="true"> · </span>
@@ -118,10 +118,10 @@ const release = setupRelease();
       </div>
       <p class="mt-3 text-sm text-ink-mute leading-relaxed">
         macOS builds are signed with Developer ID. Open the DMG and drag
-        <strong>Agent On Rails Setup</strong> into Applications (same layout as Nucleus).
+        <strong>Agent On Rails</strong> into Applications (app on the left, Applications folder on the right).
         Sparkle auto-update via
         <a class="font-semibold text-ink underline decoration-rail/60 underline-offset-4 hover:decoration-rail" href="/downloads/appcast.xml">appcast.xml</a>;
-        in the app use <strong>Agent On Rails Setup → Check for Updates…</strong>.
+        in the app use <strong>Agent On Rails → Check for Updates…</strong>.
         Windows MSI is published from GitHub Actions (unsigned until a code-signing certificate is configured). Requires Python 3.11+.
       </p>
 
