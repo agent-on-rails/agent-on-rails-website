@@ -31,11 +31,14 @@ export function setupRelease(): SetupRelease {
   const dmgHref = version
     ? `/downloads/Agent-On-Rails-Setup-${version}-macos.dmg`
     : '/downloads/Agent-On-Rails-Setup-macos.dmg';
+  const windowsHref = version
+    ? `/downloads/Agent-On-Rails-Setup-${version}-windows.msi`
+    : '/downloads/Agent-On-Rails-Setup-windows.msi';
   return {
     version,
     released,
     isoDate,
     dmgHref,
-    windowsHref: '/downloads/Agent-On-Rails-Setup-windows.msi',
+    windowsHref,
   };
 }
