@@ -74,7 +74,9 @@ const adr008 = `${controlPlane}/blob/main/adr/ADR-008-desktop-setup-wizard.md`;
       <h2 class="font-display text-2xl font-bold text-ink">Setup app (macOS, Windows, Linux)</h2>
       <p class="mt-3 text-ink-mute leading-relaxed">
         Prefer a wizard? The desktop setup app checks Python, installs the
-        <code class="text-ink">aor</code> CLI, and bootstraps your first docs+specs project —
+        <code class="text-ink">aor</code> CLI, bootstraps your first docs+specs project,
+        and can draft SurveyDesk-shaped specs from natural language
+        (<code class="text-ink">aor gather</code>, confirm before write) —
         then hands off to the terminal UI. Onboarding only
         (<a class="font-semibold text-ink underline decoration-rail/60 underline-offset-4 hover:decoration-rail" href={adr008} target="_blank" rel="noreferrer">ADR-008</a>);
         day-to-day work stays in <code class="text-ink">aor</code>.
@@ -182,7 +184,7 @@ aor</code></pre>
 
     <section id="loop" class="mt-12">
       <h2 class="font-display text-2xl font-bold text-ink">The loop</h2>
-      <pre class="mt-4 overflow-x-auto rounded-lg bg-ink px-4 py-4 text-sm leading-relaxed text-white/90"><code>aor init → aor spec new → aor spec approve → aor plan → aor run → aor review</code></pre>
+      <pre class="mt-4 overflow-x-auto rounded-lg bg-ink px-4 py-4 text-sm leading-relaxed text-white/90"><code>aor init → aor gather run → aor spec approve → aor plan → aor run → aor review</code></pre>
       <ol class="mt-6 space-y-3 text-ink-mute">
         <li><span class="font-semibold text-ink">1. Init</span> — create the docs+specs contract. No application code.</li>
         <li><span class="font-semibold text-ink">2. Spec</span> — write <code class="text-ink">spec.md</code> + acceptance + evidence.</li>
