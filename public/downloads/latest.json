@@ -1,10 +1,10 @@
 {
-  "version": "0.1.1",
+  "version": "0.1.2",
   "notes": "Agent On Rails Setup (macOS signed; Windows CI-built, unsigned until WINDOWS_CERTIFICATE is configured)",
   "pub_date": "2026-09-12T01:43:44Z",
   "platforms": {
     "darwin-aarch64": {
-      "url": "https://agent-on-rails.suherman.net/downloads/Agent-On-Rails-Setup-0.1.1.zip",
+      "url": "https://agent-on-rails.suherman.net/downloads/Agent-On-Rails-Setup-0.1.2.zip",
       "signature": ""
     },
     "windows-x86_64": {

@@ -102,8 +102,11 @@ const adr008 = `${controlPlane}/blob/main/adr/ADR-008-desktop-setup-wizard.md`;
         </a>
       </div>
       <p class="mt-3 text-sm text-ink-mute leading-relaxed">
-        macOS builds are signed with Developer ID (Sparkle auto-update via
-        <a class="font-semibold text-ink underline decoration-rail/60 underline-offset-4 hover:decoration-rail" href="/downloads/appcast.xml">appcast.xml</a>).
+        macOS builds are signed with Developer ID. Open the DMG and drag
+        <strong>Agent On Rails Setup</strong> into Applications (same layout as Nucleus).
+        Sparkle auto-update via
+        <a class="font-semibold text-ink underline decoration-rail/60 underline-offset-4 hover:decoration-rail" href="/downloads/appcast.xml">appcast.xml</a>;
+        in the app use <strong>Agent On Rails Setup → Check for Updates…</strong>.
         Windows MSI is published from GitHub Actions (unsigned until a code-signing certificate is configured). Requires Python 3.11+.
       </p>
 
