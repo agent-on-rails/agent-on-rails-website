@@ -25,4 +25,7 @@ if command -v sed >/dev/null; then
   fi
 fi
 
-echo "Done. Commit the kustomization pin and push so Argo can sync."
+echo "Done. Commit the kustomization pin and push, then sync HaloRT Argo:"
+echo "  git add deploy/kubernetes/apps/agent-on-rails-website/kustomization.yaml && git commit && git push"
+echo "  bash scripts/sync-argo.sh"
+echo "(Do not use default kubectl context — it may point at CIMB/UAT, not HaloRT.)"
